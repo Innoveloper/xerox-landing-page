@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meldy Mahoni Pan Parlour & Xerox</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: #1f2937; }
+
+        #hero-section {
+            transition: background-image 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            background-size: cover;
+            background-position: center;
+            border-radius: 1.5rem;
+        }
+        /* Overlay kept for a slight darken to make navigation stand out, but content removed */
+        .hero-overlay {
+            background-color: rgba(0,0,0,0.1);
+            width: 100%;
+            height: 100%;
+        }
+        .card-shadow { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); }
+        .dot { cursor: pointer; transition: all 0.3s ease; }
+        .dot.active { width: 2rem; background-color: white; }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+
+        .map-container iframe {
+            filter: grayscale(0.1) contrast(1.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+<!-- Navbar -->
+<nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between bg-white/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="flex items-center gap-2">
+        <div class="bg-blue-600 p-1.5 rounded-md">
+            <i data-lucide="store" class="text-white w-5 h-5"></i>
+        </div>
+        <span class="font-bold text-xl tracking-tight">Meldy Mahoni Pan Parlour & Xerox</span>
+    </div>
+    <div class="flex items-center gap-8 text-sm font-medium text-gray-600">
+        <a href="#services" class="hover:text-blue-600 transition">Services</a>
+        <a href="#hero-section" class="hover:text-blue-600 transition">Products</a>
+        <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+    </div>
+</nav>
+
+<!-- Hero Section / Carousel -->
+<section class="max-w-7xl mx-auto px-6 mt-4">
+    <div id="hero-section" class="h-[700px] relative overflow-hidden group">
+        <!-- Text overlay content removed as requested -->
+        <div class="hero-overlay"></div>
+
+        <!-- Navigation Arrows -->
+        <button onclick="prevSlide()" class="nav-btn absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center z-20 opacity-0 group-hover:opacity-100">
+            <i data-lucide="chevron-left"></i>
+        </button>
+        <button onclick="nextSlide()" class="nav-btn absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center z-20 opacity-0 group-hover:opacity-100">
+            <i data-lucide="chevron-right"></i>
+        </button>
+
+        <!-- Dots Container -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20" id="dot-container">
+            <div onclick="setSlide(0)" class="dot active w-8 h-1 bg-white rounded-full"></div>
+            <div onclick="setSlide(1)" class="dot w-2 h-1 bg-white/40 rounded-full"></div>
+            <div onclick="setSlide(2)" class="dot w-2 h-1 bg-white/40 rounded-full"></div>
+            <div onclick="setSlide(3)" class="dot w-2 h-1 bg-white/40 rounded-full"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="max-w-7xl mx-auto px-6 py-24">
+    <h2 class="text-3xl font-bold mb-4">Our Services</h2>
+    <p class="text-gray-500 max-w-xl mb-12">
+        We offer a range of services designed to meet your needs with precision and care.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-8 rounded-2xl border border-gray-100 card-shadow">
+            <div class="bg-blue-50 w-12 h-12 flex items-center justify-center rounded-lg mb-6">
+                <i data-lucide="users" class="text-blue-600 w-6 h-6"></i>
+            </div>
+            <h3 class="font-bold text-lg mb-3">Pan, Tobacco & FMCG Sales</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Pan, cigarette, gutkha (as permitted by law), Cold drinks, water bottles, chips, biscuits, Daily-use small items</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl border border-gray-100 card-shadow">
+            <div class="bg-blue-50 w-12 h-12 flex items-center justify-center rounded-lg mb-6">
+                <i data-lucide="tag" class="text-blue-600 w-6 h-6"></i>
+            </div>
+            <h3 class="font-bold text-lg mb-3">Xerox, Printing & Scanning Services</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Black & white / color xerox, Printouts from mobile, email, WhatsApp, or pen drive, Document scanning & PDF creation</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl border border-gray-100 card-shadow">
+            <div class="bg-blue-50 w-12 h-12 flex items-center justify-center rounded-lg mb-6">
+                <i data-lucide="wrench" class="text-blue-600 w-6 h-6"></i>
+            </div>
+            <h3 class="font-bold text-lg mb-3">Online & Digital Services</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Online form filling (government & private), Aadhaar-related assistance (printouts, downloads), Ticket booking, bill payments, recharge</p>
+        </div>
+    </div>
+</section>
+
+<!-- Get in Touch Section -->
+<section id="contact" class="max-w-7xl mx-auto px-6 py-20 border-t border-gray-100">
+    <div class="mb-12">
+        <h2 class="text-3xl font-bold mb-4">Get in Touch</h2>
+        <p class="text-gray-500 max-w-xl">
+            Visit our store or reach out to us directly. We'd love to hear from you.
+        </p>
+    </div>
+
+    <div class="grid md:grid-cols-12 gap-12 items-start">
+        <div class="md:col-span-12 space-y-8">
+            <div class="map-container relative w-full h-[450px] rounded-3xl overflow-hidden shadow-sm border border-gray-100 bg-gray-100">
+                <!-- Updated Google Maps Preview for the Dholka Address -->
+                <iframe
+                        width="100%"
+                        height="100%"
+                        frameborder="0"
+                        scrolling="no"
+                        marginheight="0"
+                        marginwidth="0"
+                        src="https://maps.google.com/maps?q=G-6,+Parmukh+Arcade,+Near+Apollo+School+Circle,+Dholka,+Gujarat+382225&t=&z=16&ie=UTF8&iwloc=&output=embed">
+                </iframe>
+
+                <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10">
+                    <!-- Updated "Open in Maps" URL -->
+                    <a href="https://www.google.com/maps/search/?api=1&query=22.718333, 72.459721"
+                       target="_blank"
+                       class="bg-white px-8 py-3 rounded-xl shadow-2xl flex items-center gap-2 font-bold text-sm hover:bg-gray-50 transition-colors border border-gray-100">
+                        <i data-lucide="navigation" class="w-4 h-4 text-blue-600 fill-blue-600"></i>
+                        Open in Maps
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 flex items-start gap-4">
+                    <div class="bg-blue-50 p-2 rounded-lg"><i data-lucide="map-pin" class="text-blue-600 w-5 h-5"></i></div>
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1">Address</p>
+                        <p class="text-sm font-medium">G-6, Parmukh Arcade, Near Apollo School Circle, Dholka, Gujarat 382225</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 flex items-start gap-4">
+                    <div class="bg-blue-50 p-2 rounded-lg"><i data-lucide="phone" class="text-blue-600 w-5 h-5"></i></div>
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1">Phone</p>
+                        <p class="text-sm font-medium">(+91) 76007 51739</p>
+                        <p class="text-sm font-medium">(+91) 94286 65343</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 flex items-start gap-4">
+                    <div class="bg-blue-50 p-2 rounded-lg"><i data-lucide="mail" class="text-blue-600 w-5 h-5"></i></div>
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1">Email</p>
+                        <p class="text-sm font-medium text-break">chavdamahipalsinh12@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="max-w-7xl mx-auto px-6 py-12 border-t border-gray-100 flex flex-col gap-4 items-center text-center">
+    <div class="flex items-center gap-2">
+        <div class="bg-blue-600 p-1 rounded-md">
+            <i data-lucide="store" class="text-white w-4 h-4"></i>
+        </div>
+        <span class="font-bold text-lg">Meldy Mahoni Pan Parlour & Xerox</span>
+    </div>
+    <p class="text-sm text-gray-400">
+        © 2026 Meldy Mahoni Pan Parlour & Xerox. All rights reserved.
+    </p>
+</footer>
+
+<script>
+    lucide.createIcons();
+
+    const images = [
+        'images/image 1.jpeg',
+        'images/image 2.jpeg',
+        'images/image 3.jpeg',
+        'images/image 4.jpeg',
+    ];
+
+    let currentIndex = 0;
+    let timer;
+    const heroSection = document.getElementById('hero-section');
+    const dots = document.querySelectorAll('.dot');
+
+    function setSlide(index) {
+        currentIndex = index;
+        heroSection.style.backgroundImage = `url('${images[currentIndex]}')`;
+
+        dots.forEach((dot, i) => {
+            if(i === currentIndex) {
+                dot.classList.add('active', 'w-8', 'bg-white');
+                dot.classList.remove('w-2', 'bg-white/40');
+            } else {
+                dot.classList.remove('active', 'w-8', 'bg-white');
+                dot.classList.add('w-2', 'bg-white/40');
+            }
+        });
+
+        resetTimer();
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % images.length;
+        setSlide(currentIndex);
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        setSlide(currentIndex);
+    }
+
+    function resetTimer() {
+        clearInterval(timer);
+        timer = setInterval(nextSlide, 5000);
+    }
+
+    setSlide(0);
+</script>
+</body>
+</html>
